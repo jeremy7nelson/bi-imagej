@@ -20,7 +20,8 @@ public class BI_SPRm_Preview implements PlugInFilter
     public void run(ImageProcessor unused)
     {
         // Assume 14 frames / sec
-    	int frameRate = 14;
+    	// Only process every 14th frame
+    	int frameRate = 1;
 
         ImageStack stack = image.getStack();
         int maxSlice = stack.getSize();
@@ -54,7 +55,8 @@ public class BI_SPRm_Preview implements PlugInFilter
 
         file.write("Biosensing Instrument Build\t131072\r\n");
         file.write(String.format("Rate\t%d\r\n", frameRate));
-        file.write(String.format("DataPoints\t%d\r\n", maxSlice));
+        // DataPoints can be larger than actual but not smaller
+        file.write(String.format("DataPoints\t%d\r\n", (maxSlice / 14) + 1));
         file.write("FlowInjection\r\n");
         file.write("Shown\tTRUE\r\n");
         for (int index : selectedIndexes)
@@ -66,10 +68,12 @@ public class BI_SPRm_Preview implements PlugInFilter
         file.write("\r\n");
 
         // slice numbers start with 1 for historical reasons
-        for (int i = 1; i <= maxSlice; i++)
+        double time = 0.0;
+        for (int i = 1; i <= maxSlice; i += 14)
         {
             IJ.showProgress(i, maxSlice);
-            file.write(String.format("%.3f", (double)(i - 1) / (double)frameRate));
+            file.write(String.format("%.3f", time));
+            time += 1.0;
             ImageProcessor processor = stack.getProcessor(i);
             for (int index : selectedIndexes)
             {
