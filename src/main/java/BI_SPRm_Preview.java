@@ -14,7 +14,7 @@ public class BI_SPRm_Preview implements PlugInFilter
     public int setup(String arg, ImagePlus imp)
     {
         image = imp;
-        return DOES_16;
+        return DOES_ALL;
     }
 
     public void run(ImageProcessor unused)
@@ -49,7 +49,7 @@ public class BI_SPRm_Preview implements PlugInFilter
         }
         catch (FileNotFoundException e)
         {
-            IJ.showStatus("Unable to open output.bi");
+            IJ.showStatus("Unable to open output file");
             return;
         }
 
