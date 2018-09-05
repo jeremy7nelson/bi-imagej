@@ -7,7 +7,7 @@ import ij.plugin.frame.RoiManager;
 import ij.process.*;
 import java.io.*;
 
-public class BI_SPRm implements PlugInFilter
+public class BI_SPRm_Preview implements PlugInFilter
 {
     private ImagePlus image;
 

@@ -12,10 +12,10 @@
 		<relativePath />
 	</parent>
 
-	<artifactId>BI_SPRm</artifactId>
+	<artifactId>BI_SPRm_Preview</artifactId>
 	<version>0.0.2</version>
 
-	<name>plugins/BI_SPRm.jar</name>
+	<name>plugins/BI_SPRm_Preview.jar</name>
 	<description>A Maven project implementing an ImageJ 1.x plugin</description>
 
 	<properties>
