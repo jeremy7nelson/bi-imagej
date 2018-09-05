@@ -7,7 +7,7 @@ import ij.plugin.frame.RoiManager;
 import ij.process.*;
 import java.io.*;
 
-public class BI_SPRm implements PlugInFilter
+public class BI_SPRm_1Sec implements PlugInFilter
 {
     private ImagePlus image;
 
@@ -19,8 +19,8 @@ public class BI_SPRm implements PlugInFilter
 
     public void run(ImageProcessor unused)
     {
-        // Assume 14 frames / sec
-    	int frameRate = 14;
+        // Assume 1 frame / sec
+    	int frameRate = 1;
 
         ImageStack stack = image.getStack();
         int maxSlice = stack.getSize();
