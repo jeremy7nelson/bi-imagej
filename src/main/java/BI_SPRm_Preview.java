@@ -53,18 +53,20 @@ public class BI_SPRm_Preview implements PlugInFilter
             return;
         }
 
-        file.write("Biosensing Instrument Build\t131072\r\n");
+        file.write("Biosensing Instrument Build\t0\r\n");
         file.write(String.format("Rate\t%d\r\n", frameRate));
         // DataPoints can be larger than actual but not smaller
         file.write(String.format("DataPoints\t%d\r\n", (maxSlice / 14) + 1));
+        file.write(String.format("RoiUnit\t%%\r\n"));
+        file.write(String.format("TimeUnit\tsec\r\n"));
         file.write("FlowInjection\r\n");
         file.write("Shown\tTRUE\r\n");
         for (int index : selectedIndexes)
-            file.write(String.format("Input\tRegion%d\r\n", index + 1));
+            file.write(String.format("Input\tRoi%d\r\n", index + 1));
         file.write("Data\r\n");
         file.write("Time (s)");
         for (int index : selectedIndexes)
-            file.write(String.format("\tRegion%d ()", index + 1));
+            file.write(String.format("\tRoi%d (%%)", index + 1));
         file.write("\r\n");
 
         // slice numbers start with 1 for historical reasons
@@ -79,7 +81,7 @@ public class BI_SPRm_Preview implements PlugInFilter
             {
                 processor.setRoi(roiManager.getRoi(index));
                 ImageStatistics stats = ImageStatistics.getStatistics(processor, options, calibration);
-                file.write(String.format("\t%.3f", stats.mean));
+                file.write(String.format("\t%.3f", stats.mean / 65536.0 * 100.0));
             }
             file.write("\r\n");
         }
