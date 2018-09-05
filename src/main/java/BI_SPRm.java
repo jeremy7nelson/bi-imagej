@@ -7,7 +7,7 @@ import ij.plugin.frame.RoiManager;
 import ij.process.*;
 import java.io.*;
 
-public class Process_SPR implements PlugInFilter
+public class BI_SPRm implements PlugInFilter
 {
     private ImagePlus image;
 
@@ -43,7 +43,7 @@ public class Process_SPR implements PlugInFilter
 
         try
         {
-            file = new PrintWriter("output.bi");
+            file = new PrintWriter(image.getTitle() + ".bi");
         }
         catch (FileNotFoundException e)
         {

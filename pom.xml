@@ -12,14 +12,14 @@
 		<relativePath />
 	</parent>
 
-	<artifactId>Process_SPR</artifactId>
+	<artifactId>BI_SPRm</artifactId>
 	<version>0.0.1</version>
 
-	<name>plugins/Process_SPR.jar</name>
+	<name>plugins/BI_SPRm.jar</name>
 	<description>A Maven project implementing an ImageJ 1.x plugin</description>
 
 	<properties>
-		<main-class>Process_SPR</main-class>
+		<main-class>BI_SPRm</main-class>
 	</properties>
 
 	<dependencies>
