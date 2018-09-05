@@ -19,7 +19,8 @@ public class BI_SPRm implements PlugInFilter
 
     public void run(ImageProcessor unused)
     {
-        int frameRate = 1;
+        // Assume 14 frames / sec
+    	int frameRate = 14;
 
         ImageStack stack = image.getStack();
         int maxSlice = stack.getSize();
