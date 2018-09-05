@@ -13,7 +13,7 @@
 	</parent>
 
 	<artifactId>BI_SPRm</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.3</version>
 
 	<name>plugins/BI_SPRm.jar</name>
 	<description>A Maven project implementing an ImageJ 1.x plugin</description>
